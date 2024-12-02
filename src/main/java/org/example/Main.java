@@ -28,7 +28,8 @@ public class Main {
         // Фильтрация по корректности дат сегментов
         List<FlightEntity> validSegmentsFlights = afterCurrentTimeFlights.stream()
                 .filter(flight -> flight.getSegments().stream()
-                        .allMatch(segment -> segment.getArrivalDate().isAfter(segment.getDepartureDate()))
+                        .allMatch(segment -> segment.getArrivalDate()
+                                .isAfter(segment.getDepartureDate()))
                 ).toList();
         System.out.println("\nРейсы с корректными датами сегментов:");
         validSegmentsFlights.forEach(System.out::println);
@@ -42,7 +43,8 @@ public class Main {
                     for (int i = 0; i < segments.size() - 1; i++) {
                         SegmentEntity currentSegment = segments.get(i);
                         SegmentEntity nextSegment = segments.get(i + 1);
-                        Duration groundTime = Duration.between(currentSegment.getArrivalDate(), nextSegment.getDepartureDate());
+                        Duration groundTime = Duration.between(currentSegment
+                                .getArrivalDate(), nextSegment.getDepartureDate());
                         totalGroundTime = totalGroundTime.plus(groundTime);
                     }
 

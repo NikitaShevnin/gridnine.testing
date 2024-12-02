@@ -60,7 +60,8 @@ public class FlightFilter {
     private boolean areSegmentsValid(FlightEntity flight) {
         // Проверяем, что для каждого сегмента время прибытия больше времени отправления
         return flight.getSegments().stream()
-                .allMatch(segment -> segment.getArrivalDate().isAfter(segment.getDepartureDate()));
+                .allMatch(segment -> segment.getArrivalDate()
+                        .isAfter(segment.getDepartureDate()));
     }
 
     /**
@@ -80,7 +81,8 @@ public class FlightFilter {
             SegmentEntity nextSegment = segments.get(i + 1); // Следующий сегмент
 
             // Вычисляем время на земле между текущим сегментом и следующим
-            Duration groundTime = Duration.between(currentSegment.getArrivalDate(), nextSegment.getDepartureDate());
+            Duration groundTime = Duration.between(currentSegment.getArrivalDate(),
+                    nextSegment.getDepartureDate());
             totalGroundTime = totalGroundTime.plus(groundTime); // Суммируем время на земле
         }
 
