@@ -1,5 +1,7 @@
-package org.example;
+package org.example.builder;
 
+import org.example.entity.FlightEntity;
+import org.example.entity.SegmentEntity;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -8,22 +10,16 @@ import java.util.List;
 /**
  * Фабричный класс для создания тестовых рейсов.
  */
-class FlightBuilder {
+public class FlightBuilder {
 
     /**
-     * Статический метод для создания списка рейсов
+     * Создает список тестовых рейсов.
      *
      * @return список тестовых рейсов
      */
-    static List<FlightEntity> createFlights() {
-
-        // Определяем дату и время, которое соответствует текущему моменту плюс 3 дня
+    public static List<FlightEntity> createFlights() {
         LocalDateTime threeDaysFromNow = LocalDateTime.now().plusDays(3);
 
-        /*
-         Возвращаем список из нескольких объектов типа Flight,
-         созданных с помощью метода createFlight с разными параметрами
-         */
         return Arrays.asList(
                 // Создание рейса, который начинается через 3 дня и длится 2 часа
                 createFlight(threeDaysFromNow, threeDaysFromNow.plusHours(2)),
@@ -53,30 +49,26 @@ class FlightBuilder {
      * Создает рейс с заданными датами отправления и прибытия.
      *
      * @param dates массив дат отправления и прибытия
-     * @return объект Flight
+     * @return объект FlightEntity
      * @throws IllegalArgumentException если количество дат нечетное
      */
     private static FlightEntity createFlight(final LocalDateTime... dates) {
-
-        /*
-         Проверка на четное количество переданных дат
-         */
+        // Проверка на четное количество переданных дат
         if ((dates.length % 2) != 0) {
             throw new IllegalArgumentException("Вы должны передать четное количество дат");
         }
 
-        /*
-        Инициализация списка сегментов делим на 2 для того что бы не занимать много памяти
-        и использовать ровно столько памяти сколько нужно для работы
-         */
+        // Инициализация списка сегментов делим на 2 для того, чтобы не занимать много памяти
+        // используем ровно столько памяти, сколько нужно для работы
         List<SegmentEntity> segmentEntities = new ArrayList<>(dates.length / 2);
 
         // Обработка пар дат для создания сегментов
         for (int i = 0; i < (dates.length - 1); i += 2) {
+            // Создаем новый сегмент с датами отправления и прибытия
             segmentEntities.add(new SegmentEntity(dates[i], dates[i + 1]));
         }
 
-        // Возвращение нового объекта FlightEntity
+        // Возвращение нового объекта FlightEntity с созданными сегментами
         return new FlightEntity(segmentEntities);
     }
 }

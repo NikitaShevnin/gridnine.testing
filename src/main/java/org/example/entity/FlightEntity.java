@@ -1,4 +1,4 @@
-package org.example;
+package org.example.entity;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -6,8 +6,7 @@ import java.util.stream.Collectors;
 /**
  * Класс, представляющий рейс.
  */
-class FlightEntity {
-
+public class FlightEntity {
     private final List<SegmentEntity> segmentEntities;
 
     /**
@@ -15,7 +14,7 @@ class FlightEntity {
      *
      * @param segs список сегментов рейса
      */
-    FlightEntity(final List<SegmentEntity> segs) {
+    public FlightEntity(final List<SegmentEntity> segs) {
         segmentEntities = segs;
     }
 
@@ -24,7 +23,7 @@ class FlightEntity {
      *
      * @return список сегментов
      */
-    List<SegmentEntity> getSegments() {
+    public List<SegmentEntity> getSegments() {
         return segmentEntities;
     }
 
