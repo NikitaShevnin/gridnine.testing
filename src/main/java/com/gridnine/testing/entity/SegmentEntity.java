@@ -1,4 +1,4 @@
-package org.example.entity;
+package com.gridnine.testing.entity;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -20,6 +20,14 @@ public class SegmentEntity {
     public SegmentEntity(final LocalDateTime dep, final LocalDateTime arr) {
         departureDate = Objects.requireNonNull(dep);
         arrivalDate = Objects.requireNonNull(arr);
+    }
+
+    /**
+     * Конструктор без параметров (для тестов).
+     */
+    public SegmentEntity() {
+        this.departureDate = LocalDateTime.now();
+        this.arrivalDate = LocalDateTime.now().plusHours(1);
     }
 
     /**

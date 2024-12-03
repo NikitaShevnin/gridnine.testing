@@ -1,7 +1,7 @@
-package org.example.builder;
+package com.gridnine.testing.builder;
 
-import org.example.entity.FlightEntity;
-import org.example.entity.SegmentEntity;
+import com.gridnine.testing.entity.FlightEntity;
+import com.gridnine.testing.entity.SegmentEntity;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -52,7 +52,7 @@ public class FlightBuilder {
      * @return объект FlightEntity
      * @throws IllegalArgumentException если количество дат нечетное
      */
-    private static FlightEntity createFlight(final LocalDateTime... dates) {
+    public static FlightEntity createFlight(final LocalDateTime... dates) {
         // Проверка на четное количество переданных дат
         if ((dates.length % 2) != 0) {
             throw new IllegalArgumentException("Вы должны передать четное количество дат");

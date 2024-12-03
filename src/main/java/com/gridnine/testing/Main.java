@@ -1,9 +1,9 @@
-package org.example;
+package com.gridnine.testing;
 
-import org.example.builder.FlightBuilder;
-import org.example.entity.FlightEntity;
-import org.example.entity.SegmentEntity;
-import org.example.filter.FlightFilter;
+import com.gridnine.testing.builder.FlightBuilder;
+import com.gridnine.testing.entity.FlightEntity;
+import com.gridnine.testing.entity.SegmentEntity;
+import com.gridnine.testing.filter.FlightFilter;
 
 import java.time.Duration;
 import java.util.List;

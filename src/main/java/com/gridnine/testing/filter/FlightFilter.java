@@ -1,7 +1,7 @@
-package org.example.filter;
+package com.gridnine.testing.filter;
 
-import org.example.entity.FlightEntity;
-import org.example.entity.SegmentEntity;
+import com.gridnine.testing.entity.FlightEntity;
+import com.gridnine.testing.entity.SegmentEntity;
 import java.time.LocalDateTime;
 import java.time.Duration;
 import java.util.List;
@@ -46,7 +46,7 @@ public class FlightFilter {
      * @param now текущее время
      * @return true, если рейс начинается после текущего момента, иначе false
      */
-    private boolean isFlightAfterCurrentTime(FlightEntity flight, LocalDateTime now) {
+    public boolean isFlightAfterCurrentTime(FlightEntity flight, LocalDateTime now) {
         // Проверяем, что время отправления первого сегмента больше текущего времени
         return flight.getSegments().getFirst().getDepartureDate().isAfter(now);
     }

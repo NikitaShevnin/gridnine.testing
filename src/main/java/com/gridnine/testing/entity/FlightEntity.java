@@ -1,10 +1,14 @@
-package org.example.entity;
+package com.gridnine.testing.entity;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Класс, представляющий рейс.
+ * Класс, представляющий сущность рейса.
+ * Содержит:
+ * Конструктор FlightEntity
+ * геттер getSegments
+ * и метод toString для отображения информации из сегментов в консоли.
  */
 public class FlightEntity {
     private final List<SegmentEntity> segmentEntities;
